@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumar Números</title>
+    <title>Operaciones con Números</title>
 </head>
 <body>
-    <h1>Formulario para Sumar Números</h1>
+    <h1>Formulario para Operaciones con Números</h1>
+
+    <h2>Sumar Números</h2>
     <form id="sumForm">
         <label for="number1">Número 1:</label>
         <input type="number" id="number1" name="number1" required>
@@ -16,24 +18,53 @@
         <br>
         <button type="submit">Sumar</button>
     </form>
-    <p id="result"></p>
+    <p id="sumResult"></p>
+
+    <h2>Restar Números</h2>
+    <form id="multiplyForm">
+        <label for="number3">Número 1:</label>
+        <input type="number" id="number3" name="number3" required>
+        <br>
+        <label for="number4">Número 2:</label>
+        <input type="number" id="number4" name="number4" required>
+        <br>
+        <button type="submit">Restar</button>
+    </form>
+    <p id="multiplyResult"></p>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('sumForm');
-            const resultElement = document.getElementById('result');
+            const sumForm = document.getElementById('sumForm');
+            const sumResultElement = document.getElementById('sumResult');
 
-            form.addEventListener('submit', function(event) {
+            sumForm.addEventListener('submit', function(event) {
                 event.preventDefault(); // Evita el envío del formulario y recarga de la página
 
                 const number1 = parseFloat(document.getElementById('number1').value);
                 const number2 = parseFloat(document.getElementById('number2').value);
 
                 if (isNaN(number1) || isNaN(number2)) {
-                    resultElement.textContent = 'Por favor, ingresa dos números válidos.';
+                    sumResultElement.textContent = 'Por favor, ingresa dos números válidos.';
                 } else {
                     const sum = number1 + number2;
-                    resultElement.textContent = `La suma de ${number1} y ${number2} es ${sum}.`;
+                    sumResultElement.textContent = `La suma de ${number1} y ${number2} es ${sum}.`;
+                }
+            });
+
+            const multiplyForm = document.getElementById('multiplyForm');
+            const multiplyResultElement = document.getElementById('multiplyResult');
+
+            multiplyForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita el envío del formulario y recarga de la página
+
+                const number3 = parseFloat(document.getElementById('number3').value);
+                const number4 = parseFloat(document.getElementById('number4').value);
+
+                if (isNaN(number3) || isNaN(number4)) {
+                    multiplyResultElement.textContent = 'Por favor, ingresa dos números válidos.';
+                } else {
+                    const product = number3 - number4;
+                    multiplyResultElement.textContent = `La resta de ${number3} y ${number4} es ${product}.`;
                 }
             });
         });
